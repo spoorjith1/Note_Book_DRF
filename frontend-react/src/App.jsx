@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import NotFound from './pages/NotFound'
 import ProtectedRoute from './components/ProtectedRoute'
 import CreatePage from './pages/CreatePage'
+import EditPage from './pages/EditPage'
 
 function Logout() {
   localStorage.clear()
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path='/create' element={<ProtectedRoute><CreatePage /></ProtectedRoute>} />
+        <Route path='/edit/:id' element={<ProtectedRoute><EditPage /></ProtectedRoute>} />
         <Route path='/login' element={<Login />} />
         <Route path='/logout' element={<Logout />} />
         <Route path='/register' element={<RegisterAndLogout />} />

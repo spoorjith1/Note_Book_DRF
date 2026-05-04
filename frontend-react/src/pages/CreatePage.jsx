@@ -11,7 +11,7 @@ function CreatePage() {
   const createNote = (e) => {
     e.preventDefault()
     api.post('api/v1/notes/', {content, title}).then((res) => {
-      if (res.status === 201) { alert("Note Created") }
+      if (res.status === 201) alert("Note Created")
       else { alert("Failed to Create Note") }
       navigate('/')
     }).catch((error) => alert(error))
@@ -28,7 +28,7 @@ function CreatePage() {
             <label htmlFor="content">Content :</label><br />
             <textarea type="text" id="content" name="content" required onChange={(e) => setContent(e.target.value)} value={content}  className="create-input mt-1 create-textarea"></textarea>
             <br />
-            <button type="submit" className="btn btn-warning create-btn mt-3">Create Note</button>
+            <button type="submit" className="create-btn">Create Note</button>
         </form>
       </div>
     </div>

@@ -3,7 +3,7 @@ import React from 'react'
 function Title() {
   return (
     <div>
-      <h1>PrivateNote.app</h1>
+      <h1 className='site-title'>PrivateNote.app</h1>
     </div>
   )
 }

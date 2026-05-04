@@ -3,6 +3,8 @@ import api from '../api'
 import { useNavigate } from 'react-router-dom'
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants'
 import LoadingIndicator from './LoadingIndicator'
+import Title from './Title'
+import { Link } from 'react-router-dom'
 
 
 function Form({route, method}) {
@@ -37,14 +39,16 @@ function Form({route, method}) {
     }
 
     return (
-    <div className="container vh-100 d-flex justify-content-center align-items-center">
-      <div className="text-center p-5 shadow rounded-4 bg-dark text-light" style={{ width: "400px" }}>
-        <h1 className="mb-4 text-warning fw-bold">{name}</h1>
+    <>
+    <Title />
+    <div className="container d-flex justify-content-center align-items-center">
+      <div className="text-center p-5 shadow rounded-4">
+        <h1 className="mb-4 fw-bold">{name}</h1>
 
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            className="form-control mb-3 bg-secondary text-light border-0"
+            className="input-username"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -52,7 +56,7 @@ function Form({route, method}) {
 
           <input
             type="password"
-            className="form-control mb-4 bg-secondary text-light border-0"
+            className="input-password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -62,13 +66,25 @@ function Form({route, method}) {
 
           <button
             type="submit"
-            className="btn btn-warning w-100 fw-semibold"
+            className="btn-action"
           >
             {name}
           </button>
         </form>
+        <p style={{ marginTop: "10px" }}>
+        {method === "login" ? (
+          <>
+            New here? <Link to="/register">Register</Link>
+          </>
+        ) : (
+          <>
+            Already have an account? <Link to="/login">Login</Link>
+          </>
+        )}
+      </p>
       </div>
     </div>
+    </>
 )
 }
 

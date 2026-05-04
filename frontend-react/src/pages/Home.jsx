@@ -18,26 +18,31 @@ function Home() {
   };
 
   const deleteNote = (id) => {
-    api.delete(`api/v1/notes/delete/${id}`).then((res) => {
-      if (res.status === 204) { alert("Notes Deleted") }
-      else { alert("Failed to Delete Note") }
-      getNotes()
-    }).catch((error) => alert(error))
-  };
+      api.delete(`api/v1/notes/edit/${id}/`).then((res) => {
+        if (res.status === 204) { alert("Notes Deleted") }
+        else { alert("Failed to Delete Note") }
+        getNotes()
+      }).catch((error) => alert(error))
+    };
 
   return (
     <>
-    <Title />
+    <div className="home-nav">
+      <Title />
+      <Link to='/logout'>Logout</Link>
+    </div>
     <div className="create-circle-box">
       <div className="create-circle">
-      <Link to='/create' className="circle-plus"><FaPlus /></Link>
+        <Link to='/create' className="circle-plus"><FaPlus /></Link>
       </div>
-      <p className="create-circle-text">Create New Note</p>
+      <div>
+        <p className="create-circle-text">Create New Note</p>
+      </div>
     </div>
     <h2 className="note-heading">Notes</h2>
     <div className="notes">
-        {notes.map((note) => <Note note={note} onDelete={deleteNote} key={note.id} />)}
-      </div>
+      {notes.map((note) => <Note note={note} onDelete={deleteNote} key={note.id} />)}
+    </div>
     </>
   )
 }

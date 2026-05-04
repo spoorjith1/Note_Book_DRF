@@ -15,6 +15,7 @@ class CreateUserView(generics.CreateAPIView):
 
 #note
 class NoteCreateListView(generics.ListCreateAPIView):
+    queryset = Note.objects.all()
     serializer_class = NoteSerializer
     permission_classes = [IsAuthenticated]
     
@@ -26,9 +27,11 @@ class NoteCreateListView(generics.ListCreateAPIView):
         serializer.save(author=self.request.user)
             
 
-class NoteDeleteView(generics.DestroyAPIView):
+class NoteEditView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Note.objects.all()
     serializer_class = NoteSerializer
     permission_classes = [IsAuthenticated]
+    lookup_field = "pk"
     
     def get_queryset(self):
         user = self.request.user

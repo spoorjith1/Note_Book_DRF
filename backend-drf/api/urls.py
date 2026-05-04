@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import CreateUserView, NoteCreateListView, NoteDeleteView
+from .views import CreateUserView, NoteCreateListView, NoteEditView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
@@ -12,5 +12,5 @@ urlpatterns = [
     
     #note
     path('notes/', NoteCreateListView.as_view(), name='note_list'),
-    path('notes/delete/<int:pk>', NoteDeleteView.as_view(), name='note_delete'),
+    path('notes/edit/<int:pk>/', NoteEditView.as_view(), name='note_edit'),
 ]
