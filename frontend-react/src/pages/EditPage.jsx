@@ -40,7 +40,7 @@ function Edit() {
     api.patch(`api/v1/notes/edit/${id}/`, note)
       .then(() => {
         alert("Updated successfully");
-        navigate("/");   // redirect to home
+        navigate("/");
       })
       .catch((err) => alert(err));
   };
@@ -49,22 +49,14 @@ function Edit() {
 
   return (
     <div>
-      <h2>Edit Note</h2>
-
-      <input
-        type="text"
-        name="title"
-        value={note.title}
-        onChange={handleChange}
-      />
-
-      <textarea
-        name="content"
-        value={note.content}
-        onChange={handleChange}
-      />
-
-      <button onClick={handleUpdate}>Update</button>
+      <div className="create-container">
+        <h2>Edit Note</h2>
+        <label htmlFor="title">Title :</label><br />
+        <input type="text" name="title" value={note.title} onChange={handleChange} className="create-input mt-1" />
+        <label htmlFor="content">Content :</label><br />
+        <textarea name="content" value={note.content} onChange={handleChange} className="create-input mt-1 create-textarea" />
+        <button onClick={handleUpdate} className="create-btn">Update</button>
+      </div>
     </div>
   );
 }
